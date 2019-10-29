@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchor" focusTraversable="true" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pp.spacetanks.view.ViewController.PlayGameViewController">
+   <children>
+      <Canvas fx:id="canvas" height="800.0" layoutX="-34.0" layoutY="-20.0" width="1315.0" />
+      <Canvas fx:id="smallCanvas" height="200.0" layoutX="9.0" layoutY="160.0" width="200.0">
+         <effect>
+            <DropShadow color="WHITE" spread="0.7" />
+         </effect></Canvas>
+      <Slider fx:id="sliderAngle" focusTraversable="false" layoutX="20.0" layoutY="696.0" majorTickUnit="10.0" max="90.0" min="-90.0" minorTickCount="1" onMouseDragged="#updateAngle" onMouseReleased="#stopCannonMovingSound" prefHeight="14.0" prefWidth="206.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" />
+      <Slider fx:id="sliderPower" blockIncrement="1.0" focusTraversable="false" layoutX="20.0" layoutY="748.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" onMouseDragged="#updatePower" prefHeight="14.0" prefWidth="206.0" showTickLabels="true" showTickMarks="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="20.0" />
+      <ButtonBar layoutX="876.0" layoutY="747.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="37.0">
+        <buttons>
+          <Button fx:id="buttonForward" mnemonicParsing="false" onDragEntered="#forward" onMousePressed="#forward" onMouseReleased="#stop" text="Vor" />
+            <Button fx:id="buttonZurueck" focusTraversable="false" mnemonicParsing="false" onAction="#backward" onMousePressed="#backward" onMouseReleased="#stop" text="Zurück" />
+            <Button fx:id="buttonZuenden" focusTraversable="false" mnemonicParsing="false" onAction="#spark" text="Zünden" />
+            <Button fx:id="buttonFeuern" focusTraversable="false" mnemonicParsing="false" onAction="#fire" text="Feuern" />
+        </buttons>
+      </ButtonBar>
+      <Button fx:id="buttonPause" focusTraversable="false" layoutX="1186.0" layoutY="189.0" mnemonicParsing="false" onAction="#pause" text="Pause" AnchorPane.rightAnchor="37.0" />
+      <Button fx:id="buttonZoomIn" focusTraversable="false" layoutX="1213.0" layoutY="223.0" mnemonicParsing="false" onAction="#zoomIn" text="+" AnchorPane.rightAnchor="37.0" />
+      <Button fx:id="buttonZoomOut" focusTraversable="false" layoutX="1218.0" layoutY="258.0" mnemonicParsing="false" onAction="#zoomOut" text="-" AnchorPane.rightAnchor="37.0" />
+      <Button fx:id="buttonHelpLine" focusTraversable="false" layoutX="1165.0" layoutY="155.0" mnemonicParsing="false" onAction="#helpLine" text="Help Line" AnchorPane.rightAnchor="37.0" />
+      <Label fx:id="activePlayer" layoutX="593.0" layoutY="8.0" text="Spieler X" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="tankFuelStatusP1" layoutX="84.0" layoutY="32.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.leftAnchor="100.0" />
+      <ProgressBar fx:id="tankAntennaStatusP1" layoutX="84.0" layoutY="51.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.leftAnchor="100.0" />
+      <ProgressBar fx:id="tankCannonStatusP1" layoutX="84.0" layoutY="70.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.leftAnchor="100.0" />
+      <ProgressBar fx:id="tankChainStatusP1" layoutX="84.0" layoutY="89.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.leftAnchor="100.0" />
+      <Label fx:id="player1Name" layoutX="11.0" layoutY="8.0" prefHeight="27.0" prefWidth="150.0" text="Spieler 1" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="34.0" text="Tank" textFill="WHITE" AnchorPane.leftAnchor="18.0" />
+      <Label layoutX="20.0" layoutY="53.0" text="Antenne" textFill="WHITE" AnchorPane.leftAnchor="18.0" />
+      <Label layoutX="20.0" layoutY="72.0" text="Kanone" textFill="WHITE" AnchorPane.leftAnchor="18.0" />
+      <Label layoutX="20.0" layoutY="91.0" text="Kette" textFill="WHITE" AnchorPane.leftAnchor="18.0" />
+      <Label fx:id="player2Name" layoutX="1194.0" layoutY="8.0" prefHeight="27.0" text="Spieler 2" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="tankFuelStatusP2" layoutX="1050.0" layoutY="32.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.rightAnchor="101.0" />
+      <ProgressBar fx:id="tankAntennaStatusP2" layoutX="1050.0" layoutY="51.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.rightAnchor="101.0" />
+      <ProgressBar fx:id="tankCannonStatusP2" layoutX="1050.0" layoutY="70.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.rightAnchor="101.0" />
+      <ProgressBar fx:id="tankChainStatusP2" layoutX="1050.0" layoutY="89.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.rightAnchor="101.0" />
+      <Label layoutX="1221.0" layoutY="34.0" text="Tank" textFill="WHITE" AnchorPane.rightAnchor="18.0" />
+      <Label layoutX="1199.0" layoutY="53.0" text="Antenne" textFill="WHITE" AnchorPane.rightAnchor="18.0" />
+      <Label layoutX="1204.0" layoutY="72.0" text="Kanone" textFill="WHITE" AnchorPane.rightAnchor="18.0" />
+      <Label layoutX="1218.0" layoutY="91.0" text="Kette" textFill="WHITE" AnchorPane.rightAnchor="18.0" />
+      <ProgressBar fx:id="tankChassiStatusP1" layoutX="84.0" layoutY="108.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.leftAnchor="100.0" />
+      <ProgressBar fx:id="tankChassiStatusP2" layoutX="1050.0" layoutY="108.0" prefHeight="10.0" prefWidth="130.0" progress="0.0" AnchorPane.rightAnchor="101.0" />
+      <Label layoutX="20.0" layoutY="109.0" text="Wanne" textFill="WHITE" AnchorPane.leftAnchor="18.0" />
+      <Label layoutX="1212.0" layoutY="109.0" text="Wanne" textFill="WHITE" AnchorPane.rightAnchor="18.0" />
+      <MenuButton id="munSelect" fx:id="munSelect" focusTraversable="false" layoutX="38.0" layoutY="647.0" mnemonicParsing="false" text="Munition Auswählen" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="20.0">
+        <items>
+
+        </items>
+      </MenuButton>
+      <Label fx:id="activePlayerMoney" layoutX="571.0" layoutY="37.0" text="Geld Spieler X" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="endGameLabel" layoutX="620.0" layoutY="94.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="127.0" text="BwCoins" textFill="WHITE" AnchorPane.leftAnchor="18.0" />
+      <Label layoutX="29.0" layoutY="127.0" text="BwCoins" textFill="WHITE" AnchorPane.rightAnchor="18.0" />
+      <Text fx:id="txtP1Money" fill="WHITE" layoutX="98.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.leftAnchor="100.0" />
+      <Text fx:id="txtP2Money" fill="WHITE" layoutX="1155.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.rightAnchor="101.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainMenuAnchor" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pp.spacetanks.view.ViewController.MainMenuViewController">
+   <children>
+      <ImageView fx:id="mainMenuBGImg" fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/weltallMap2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="166.0" fitWidth="173.0" layoutX="325.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Planeten/planet3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-40.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Planeten/planet2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mainStart" fitHeight="62.0" fitWidth="169.0" layoutX="208.0" layoutY="134.0" onMouseClicked="#start" onMouseEntered="#changeImageNewGameEnter" onMouseExited="#changeImageNewGameExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Buttons/NewGameButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mainOptionen" fitHeight="62.0" fitWidth="169.0" layoutX="208.0" layoutY="305.0" onMouseClicked="#options" onMouseEntered="#changeImageOptionsEnter" onMouseExited="#changeImageOptionsExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Buttons/OptionsButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mainBeenden" fitHeight="62.0" fitWidth="169.0" layoutX="208.0" layoutY="393.0" onMouseClicked="#quit" onMouseEntered="#changeImageExitEnter" onMouseExited="#changeImageExitExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Buttons/ExitButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="headline" layoutX="166.0" layoutY="70.0" stroke="#f3f1f1" strokeType="OUTSIDE" text="SPACETANKS">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="mainContinue" fitHeight="62.0" fitWidth="169.0" layoutX="208.0" layoutY="217.0" onMouseClicked="#continueGame" onMouseEntered="#changeImageContinueEnter" onMouseExited="#changeImageContinueExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Buttons/ContinueButton.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
